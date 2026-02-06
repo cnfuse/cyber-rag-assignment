@@ -1,8 +1,7 @@
 """
-Typhoon OCR Integration for Thai PDF Processing.
+Typhoon OCR integration for Thai PDFs.
 
-This module provides integration with Typhoon OCR for extracting text
-from Thai language PDFs using the specialized Typhoon OCR model.
+Uses the Typhoon OCR API to extract text from Thai documents.
 """
 
 import logging
@@ -18,10 +17,8 @@ logger = logging.getLogger(__name__)
 
 class TyphoonOCRExtractor:
     """
-    Wrapper for Typhoon OCR to extract text from Thai PDFs.
-    
-    Typhoon OCR is specifically optimized for Thai document extraction
-    and provides better results than generic OCR for Thai language PDFs.
+    Uses Typhoon OCR API for Thai text extraction.
+    Works better than generic OCR for Thai documents.
     """
     
     def __init__(self):

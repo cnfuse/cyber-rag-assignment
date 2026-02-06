@@ -1,19 +1,18 @@
-# Cybersecurity RAG Agent - Architecture
+# Architecture
 
 ## Overview
 
-This document describes the architecture of the Cybersecurity RAG Agent, a production-ready system designed to answer cybersecurity questions using **only** the provided dataset documents.
+This system answers cybersecurity questions using only the documents in the dataset. No external knowledge, no hallucinations.
 
-## Design Principles
+## Key Design Choices
 
-### 1. Dataset-Only Grounding (Core Requirement)
-- All answers are strictly grounded in retrieved chunks from the dataset
-- No external knowledge or LLM hallucinations allowed
-- Explicit refusal when data is insufficient
-- Full citation traceability for every answer
+### Dataset-Only Answers
+- Everything is retrieved from the dataset documents
+- If it's not in the docs, the system refuses to answer
+- Every answer includes source citations
 
-### 2. Agent-Based Architecture
-The system uses three specialized agents that communicate through an explicit tool interface:
+### Three-Agent Design
+The system has three agents that work together through a shared tool interface:
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐

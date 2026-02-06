@@ -1,12 +1,12 @@
-# Quick Start Guide
+# Quick Start
 
-Get the Cybersecurity RAG Agent running in 5 minutes.
+Get this running in about 5 minutes.
 
-## Prerequisites
+## What You Need
 
-- **Python 3.10+** installed
-- **Ollama** running with Gemma model
-- The `dataset/` folder with PDF documents
+- Python 3.10 or newer
+- Ollama with the Gemma model
+- The dataset folder with PDFs
 
 ---
 

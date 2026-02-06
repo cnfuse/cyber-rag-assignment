@@ -1,13 +1,11 @@
 """
-Production-Ready FastAPI Server for Cybersecurity RAG Agent.
+FastAPI server for the RAG agent.
 
-Features:
-- Health checks and readiness probes
-- Structured JSON logging
-- Request/response validation
-- Prometheus metrics endpoint
-- CORS support
-- Graceful shutdown
+Includes:
+- Health check endpoint
+- JSON logging
+- Prometheus metrics
+- CORS
 """
 
 import logging
@@ -31,7 +29,7 @@ from .agent import CybersecurityRAGAgent, QueryResponse
 # ==================== Logging Setup ====================
 
 def setup_logging():
-    """Configure structured logging for production."""
+    """Setup JSON logging."""
     
     # Configure structlog
     structlog.configure(

@@ -1,37 +1,33 @@
 # Cybersecurity RAG Agent
 
-A production-ready, strict dataset-only RAG (Retrieval-Augmented Generation) agent for cybersecurity Q&A. All answers are grounded exclusively in the provided dataset documents using local LLM inference via Ollama.
+A RAG (Retrieval-Augmented Generation) system for cybersecurity Q&A that answers questions strictly from the provided dataset. Uses Ollama for local LLM inference.
 
 ## Features
 
-- ✅ **Dataset-Only Grounding** - Answers strictly from provided documents
-- ✅ **Three-Agent Architecture** - Indexing, QA, and Grounding agents
-- ✅ **Explicit Tool Interface** - All operations through defined tools
-- ✅ **Refusal Logic** - Refuses to answer when evidence insufficient
-- ✅ **Full Citations** - Every answer includes source references
-- ✅ **Thai PDF Support** - Automatic OCR for Thai documents via Typhoon OCR
-- ✅ **Production Ready** - Health checks, metrics, structured logging
+- Answers only from dataset documents (no hallucination)
+- Three-agent architecture: Indexing, QA, and Grounding
+- Refuses to answer when information isn't in the dataset
+- Full source citations with every answer
+- Thai PDF support via Typhoon OCR API
+- FastAPI server with health monitoring
 
 ## Prerequisites
 
-- **Python 3.10+**
-- **Ollama** with Gemma model
-  - Download: https://ollama.ai
-  - Or: `winget install Ollama` (Windows)
-- **Typhoon API Key** (optional, for Thai PDF processing)
-  - Sign up at: https://opentyphoon.ai
-  - Or visit: https://scb-10x.github.io/typhoon/ for documentation
+- Python 3.10 or higher
+- Ollama with Gemma model (https://ollama.ai)
+  - Windows users: `winget install Ollama`
+- Typhoon API Key (optional, only for Thai PDF support)
+  - Get one at: https://opentyphoon.ai
 
 ## Quick Start
 
 ### 1. Install Ollama & Model
 
 ```bash
-# Pull the LLM model (choose one)
-ollama pull gemma3:12b    # Recommended (12GB VRAM)
+ollama pull gemma3:12b    # Requires ~12GB VRAM
 ```
 
-### 2. Install Python Dependencies
+### 2. Install Dependencies
 
 ```powershell
 # Create virtual environment
@@ -104,13 +100,15 @@ cyber-rag-assignment/
 
 ## Architecture
 
-### Three Specialized Agents
+![System Architecture](architecture.png)
 
-| Agent | Responsibility |
-|-------|----------------|
-| **Indexing Agent** | Load PDFs, chunk documents, generate embeddings, build ChromaDB index |
-| **QA Agent** | Accept queries, retrieve chunks, generate answers with Ollama |
-| **Grounding Agent** | Verify claims against evidence, enforce refusal when insufficient |
+### Three Agents
+
+| Agent | What it does |
+|-------|-------------|
+| Indexing | Loads PDFs, chunks them, generates embeddings, stores in ChromaDB |
+| QA | Takes queries, retrieves relevant chunks, generates answers |
+| Grounding | Verifies answer claims against evidence, refuses if insufficient |
 
 ### Tool Interface
 
@@ -178,16 +176,16 @@ API_PORT=8000
 
 ---
 
-## Grounding & Refusal Logic
+## Refusal Logic
 
-The agent refuses to answer when:
+The system refuses to answer when:
 
-1. **No relevant chunks** - No documents match the query
-2. **Low similarity** - Average similarity below threshold (0.3)
-3. **Low confidence** - Answer grounding confidence < 50%
-4. **Unsupported claims** - More claims unsupported than supported
+1. No documents match the query
+2. Similarity score too low (< 0.3)
+3. Answer confidence below 50%
+4. Too many unsupported claims
 
-Example refusal:
+Example:
 ```json
 {
   "status": "refused",
@@ -240,18 +238,6 @@ print(response.answer)
 - [ARCHITECTURE_EXPLANATION.md](ARCHITECTURE_EXPLANATION.md) - Detailed system design
 - [EVALUATION_EXAMPLES.md](EVALUATION_EXAMPLES.md) - Test questions and results
 - [SYSTEM_ARCHITECTURE_C4.puml](SYSTEM_ARCHITECTURE_C4.puml) - C4 architecture diagram
-
----
-
-## Evaluation Criteria Met
-
-| Criterion | Weight | Status |
-|-----------|--------|--------|
-| Answer Grounding & Dataset Compliance | 35% | ✅ Strict grounding with refusal logic |
-| Agent Design & Architecture | 25% | ✅ Three agents with explicit tools |
-| Code Quality & Maintainability | 20% | ✅ Modular, clean, documented |
-| Communication & Documentation | 15% | ✅ Comprehensive docs |
-| Bonus: Specialized LLM | +10% | ✅ Gemma 3 via Ollama |
 
 ---
 

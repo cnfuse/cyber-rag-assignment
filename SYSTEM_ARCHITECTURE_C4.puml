@@ -6,14 +6,14 @@ title Cybersecurity RAG Agent - System Architecture
 Person(user, "User", "Cybersecurity analyst or researcher")
 
 System_Boundary(rag_system, "Cybersecurity RAG Agent") {
-    Container(api, "API Server", "FastAPI + Uvicorn", "Production HTTP API with health checks, metrics, and CORS")
+    Container(api, "API Server", "FastAPI", "HTTP API with health checks and metrics")
     
-    Container(main_agent, "Main Agent", "Python", "Orchestrates the three specialized agents")
+    Container(main_agent, "Main Agent", "Python", "Coordinates the three agents")
     
-    Container_Boundary(agents, "Specialized Agents") {
-        Container(indexing_agent, "Indexing Agent", "Python", "Loads PDFs, chunks documents, builds embeddings")
-        Container(qa_agent, "QA Agent", "Python", "Retrieves context, generates answers with citations")
-        Container(grounding_agent, "Grounding Agent", "Python", "Verifies claims, enforces refusal policy")
+    Container_Boundary(agents, "Agents") {
+        Container(indexing_agent, "Indexing Agent", "Python", "Loads PDFs, chunks docs, builds embeddings")
+        Container(qa_agent, "QA Agent", "Python", "Retrieves context and generates answers")
+        Container(grounding_agent, "Grounding Agent", "Python", "Checks if answers are actually supported")
     }
     
     Container(tools, "Tools Interface", "Python", "Explicit tool API for all agent operations")
@@ -22,6 +22,7 @@ System_Boundary(rag_system, "Cybersecurity RAG Agent") {
 }
 
 System_Ext(ollama, "Ollama Server", "LLM (Gemma 3:12b) + Embeddings (Qwen3)")
+System_Ext(typhoon, "Typhoon OCR API", "Thai PDF text extraction")
 
 Rel(user, api, "Sends questions", "HTTP/JSON")
 Rel(api, main_agent, "Routes requests")
@@ -34,6 +35,7 @@ Rel(qa_agent, tools, "vector_search, get_chunk_text")
 Rel(grounding_agent, tools, "verify_grounding")
 
 Rel(tools, chromadb, "Store/retrieve embeddings")
+Rel(tools, typhoon, "Extract Thai text", "HTTPS")
 Rel(qa_agent, ollama, "Generate answers", "HTTP")
 Rel(tools, ollama, "Generate embeddings", "HTTP")
 

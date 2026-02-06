@@ -1,9 +1,8 @@
 """
-Tools Interface for the Cybersecurity RAG Agent.
+Tool interface for the RAG system.
 
-This module defines explicit tools that agents use to interact with the system.
-All operations are performed through these tools, ensuring clear separation
-of concerns and auditability.
+Defines the tools agents use to interact with documents, vector DB, and LLM.
+Keeps things modular and makes it easier to track what's happening.
 """
 
 import hashlib

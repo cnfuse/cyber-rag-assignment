@@ -1,12 +1,12 @@
 """
-Cybersecurity RAG Agent Implementation.
+RAG Agent for cybersecurity Q&A.
 
-This module implements three specialized agents:
-1. Indexing Agent - Prepares and maintains the knowledge base
-2. QA Agent - Answers questions using retrieved evidence
-3. Grounding Agent - Verifies answers are grounded in evidence
+Three agents:
+1. Indexing - Loads PDFs, creates embeddings, stores in vector DB
+2. QA - Retrieves context and generates answers
+3. Grounding - Checks if answers are actually supported by the docs
 
-All agents communicate through the explicit tool interface.
+All work through a shared tool interface.
 """
 
 import logging
@@ -37,7 +37,7 @@ class AgentState(Enum):
 
 @dataclass
 class QueryResponse:
-    """Structured response from the RAG agent."""
+    """Response from the agent."""
     status: str  # "answered", "refused", "error"
     answer: Optional[str] = None
     sources: List[Dict[str, Any]] = field(default_factory=list)
@@ -297,13 +297,12 @@ class GroundingAgent:
         
         return False, ""
 
-
 class CybersecurityRAGAgent:
     """
-    Main RAG Agent orchestrating the three specialized agents.
+    Main agent that coordinates everything.
     
-    This is the primary interface for the cybersecurity Q&A system.
-    It coordinates indexing, retrieval, answer generation, and verification.
+    Handles indexing, retrieving docs, generating answers, and verifying
+    that answers are actually from the dataset.
     """
     
     def __init__(self):
