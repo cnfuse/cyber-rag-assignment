@@ -87,6 +87,7 @@ cyber-rag-assignment/
 │   ├── tools.py                      # Explicit tool interface
 │   ├── agent.py                      # Three specialized agents
 │   ├── api.py                        # FastAPI production server
+│   ├── typhoon_ocr_integration.py    # Thai PDF OCR integration
 │   └── inspect_db.py                 # Database inspection utility
 ├── chroma_db/                        # Vector database (auto-created)
 ├── requirements.txt                  # Python dependencies
@@ -142,12 +143,7 @@ All agents communicate through explicit tools:
 | Endpoint | Method | Description |
 |----------|--------|-------------|
 | `/ask` | POST | Ask a cybersecurity question |
-| `/index` | POST | Build/rebuild the document index |
-| `/index/status` | GET | Get current index status |
-| `/documents` | GET | List dataset documents |
-| `/health` | GET | Health check (for load balancers) |
-| `/ready` | GET | Readiness probe (for K8s) |
-| `/metrics` | GET | Prometheus metrics |
+| `/health` | GET | Health check endpoint |
 | `/docs` | GET | Interactive Swagger UI |
 
 ---
