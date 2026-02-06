@@ -188,7 +188,7 @@ Key settings in `.env`:
 ```bash
 # LLM
 OLLAMA_BASE_URL=http://localhost:11434
-OLLAMA_MODEL=gemma3:12b
+OLLAMA_MODEL=llama3.1:8b
 
 # Embeddings (Ollama)
 EMBEDDING_MODEL=qwen3-embedding:0.6b

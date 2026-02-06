@@ -19,13 +19,13 @@ Make sure your Ollama server is running and has the required model:
 ollama list
 
 # If you need the model, pull it:
-ollama pull gemma3:12b
+ollama pull llama3.1:8b
 
 ```
 
 If using a different model, update `.env`:
 ```bash
-OLLAMA_MODEL=gemma3:2b
+OLLAMA_MODEL=llama3.1:8b
 ```
 
 ---
@@ -56,7 +56,7 @@ copy .env.example .env
 Edit `.env` if needed (defaults should work):
 ```bash
 OLLAMA_BASE_URL=http://localhost:11434
-OLLAMA_MODEL=gemma3:12b
+OLLAMA_MODEL=llama3.1:8b
 ```
 
 ---
@@ -89,7 +89,7 @@ Expected output:
 
 🔍 Checking Ollama...
   ✅ Ollama is running
-  ✅ Model 'gemma3:12b' is available
+  ✅ Model 'llama3.1:8b' is available
 
 ============================================================
 🎉 All checks passed! Ready to start the server.
@@ -181,7 +181,7 @@ ollama serve
 
 ### "Model not found"
 ```powershell
-ollama pull gemma3:12b
+ollama pull llama3.1:8b
 ```
 
 ### "No documents found"

@@ -24,7 +24,7 @@ A RAG (Retrieval-Augmented Generation) system for cybersecurity Q&A that answers
 ### 1. Install Ollama & Model
 
 ```bash
-ollama pull gemma3:12b    # Requires ~12GB VRAM
+ollama pull llama3.1:8b    # Requires ~8GB VRAM
 ```
 
 ### 2. Install Dependencies
@@ -51,13 +51,34 @@ copy .env.example .env
 python verify_setup.py
 ```
 
-### 5. Start the Server
+### 5. Run Evaluation Tests (Required for Assignment)
+
+```powershell
+# Install the new Gemini package
+pip install google-genai
+
+# Set Gemini API key for LLM-as-a-judge evaluation (optional but recommended)
+$env:GEMINI_API_KEY="your-gemini-api-key"
+
+# Run evaluation
+python run_evaluation.py
+```
+
+This will:
+- Run all required test cases (covers all 3 dataset documents)
+- Evaluate answers using Google Gemini 2.0 Flash as an independent judge
+- Save results to `evaluation_results.json`
+
+**Note:** LLM-as-a-judge is optional. Tests will run without it, but judgment scores won't be available.
+**Get API key:** https://aistudio.google.com/apikey
+
+### 6. Start the Server
 
 ```powershell
 python -m src.api
 ```
 
-### 6. Ask Questions
+### 7. Ask Questions
 
 ```powershell
 curl -X POST http://localhost:8000/ask `
@@ -153,7 +174,7 @@ Environment variables (`.env`):
 ```bash
 # Ollama
 OLLAMA_BASE_URL=http://localhost:11434
-OLLAMA_MODEL=gemma3:12b
+OLLAMA_MODEL=llama3.1:8b
 
 # Embeddings (Ollama)
 EMBEDDING_MODEL=qwen3-embedding:0.6b
@@ -232,12 +253,66 @@ print(response.answer)
 
 ---
 
+## Assumptions & Limitations
+
+**Assumptions:**
+- PDFs in dataset have extractable text (not scanned images without OCR)
+- Ollama is running locally with required models
+- Questions are in English (or Thai for documents with Typhoon OCR)
+- Dataset documents remain static during runtime
+
+**Limitations:**
+- Fixed chunk size (1000 chars) may not be optimal for all content types
+- Semantic search only (no keyword/hybrid search)
+- No query history or conversation context
+- Single-turn Q&A only (no follow-up questions)
+- Similarity threshold (0.3) is fixed, not adaptive
+
+---
+
 ## Documentation
 
 - [QUICKSTART.md](QUICKSTART.md) - Step-by-step setup guide
 - [ARCHITECTURE_EXPLANATION.md](ARCHITECTURE_EXPLANATION.md) - Detailed system design
 - [EVALUATION_EXAMPLES.md](EVALUATION_EXAMPLES.md) - Test questions and results
 - [SYSTEM_ARCHITECTURE_C4.puml](SYSTEM_ARCHITECTURE_C4.puml) - C4 architecture diagram
+- [run_evaluation.py](run_evaluation.py) - Automated evaluation script
+
+---
+
+## Assignment Deliverables Checklist
+
+✅ **1. Working Agent Prototype**
+- FastAPI server: [src/api.py](src/api.py)
+- Agent implementation: [src/agent.py](src/agent.py)
+- Tool interface: [src/tools.py](src/tools.py)
+
+✅ **2. Architecture Explanation**
+- [ARCHITECTURE_EXPLANATION.md](ARCHITECTURE_EXPLANATION.md)
+- Covers agent roles, tool usage, and grounding logic
+
+✅ **3. System Diagram**
+- [architecture.png](architecture.png)
+- [SYSTEM_ARCHITECTURE_C4.puml](SYSTEM_ARCHITECTURE_C4.puml)
+
+✅ **4. Evaluation Examples**
+- [EVALUATION_EXAMPLES.md](EVALUATION_EXAMPLES.md)
+- 5 answerable questions with citations
+- 2 refusal examples (insufficient data)
+- Run tests: `python run_evaluation.py`
+
+✅ **5. Source Code**
+- Clean, modular structure
+- Clear separation of concerns
+- All required tools implemented
+
+✅ **6. Required Tools (Assignment Specification)**
+- `list_documents()` - List dataset files
+- `build_index()` - Create vector index
+- `refresh_index()` - Check index status
+- `vector_search(query, top_k)` - Semantic search
+- `get_chunk_text(chunk_id)` - Fetch chunk text
+- `verify_grounding(answer, chunks)` - Validate claims
 
 ---
 
@@ -250,7 +325,7 @@ ollama serve
 
 ### Model not found
 ```powershell
-ollama pull gemma3:12b
+ollama pull llama3.1:8b
 ```
 
 ### Index is empty

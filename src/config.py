@@ -23,7 +23,7 @@ class Settings:
     
     # Ollama Configuration
     OLLAMA_BASE_URL: str = os.getenv("OLLAMA_BASE_URL", "http://127.0.0.1:11434")
-    OLLAMA_MODEL: str = os.getenv("OLLAMA_MODEL", "gemma3:12b")
+    OLLAMA_MODEL: str = os.getenv("OLLAMA_MODEL", "llama3.1:8b")
     OLLAMA_TIMEOUT: int = int(os.getenv("OLLAMA_TIMEOUT", "120"))
     
     # Embedding Model (Ollama)

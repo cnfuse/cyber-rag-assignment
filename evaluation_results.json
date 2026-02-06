@@ -1,0 +1,725 @@
+[
+  {
+    "question": "What is Broken Access Control according to OWASP?",
+    "status": "answered",
+    "answer": "According to [Source 7: owasp-top-10.pdf, Page 7], Broken Access Control is defined as:\n\n\"A01:2021 – Broken Access Control \nAn application uses unverified data in a structured query language (SQL) call that is accessing account information:\npstmt.setString(1, request.getParameter(\"acct\"));\nResultSet results = pstmt.executeQuery( );\nAn attacker simply modifies the browser's 'acct' parameter to send whatever account number they want. \nIf not correctly verified, the attacker can access any user's account.\"\n\nAdditionally, [Source 10: owasp-top-10.pdf, Page 8] lists several types of Broken Access Control vulnerabilities:\n\n• Violation of the principle of least privilege or deny by default\n• Bypassing access control checks\n• Permitting viewing or editing someone else's account\n• Accessing API with missing access controls for POST, PUT and DELETE\n• Elevation of privilege\n• Metadata manipulation\n\nThese definitions and examples illustrate what Broken Access Control is according to OWASP.",
+    "sources": [
+      {
+        "file": "owasp-top-10.pdf",
+        "page": 36,
+        "chunk_id": "owasp-top-10.pdf_p36_c0",
+        "similarity": 0.675,
+        "excerpt": "References\n• “Broken Access Control,” OWASP. N.d. https://owasp.org/Top10/A01_2021-Broken_Access_Control/\n• “Cryptographic Failures,” OWASP. N.d. https://owasp.org/Top10/A02_2021-Cryptographic_Failure..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 64,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p64_c1",
+        "similarity": 0.659,
+        "excerpt": "DevSecOps และ อาจจะพิจารณาสิ่งสำคัญในการรักษาความมั่นคงปลอดภัย ของการพัฒนาโปรแกรมประยุกต์บนเว็บ รวมถึงอาจจะ พิจารณาประยุกต์ใช้หลักการ DevSecOps โดยใช้ หลักการ DSOMM ของมูลนิธิ OWASP ซึ่งมีรายละเอียด ต..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 54,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p54_c1",
+        "similarity": 0.643,
+        "excerpt": "<table><tr><td>วัตถุประสงค์/ ระดับ</td><td>การรักษาความลับ<br/>(Confidentiality)</td><td>การรักษาความถูกต้อง<br/>(Integrity)</td><td>การรักษาสภาพพร้อมใช้<br/>งาน<br/>(Availability)</td></tr><tr><td>ต่..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 52,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p52_c1",
+        "similarity": 0.642,
+        "excerpt": "<table><tr><td>วัตถุประสงค์/ระดับ</td><td>การรักษาความลับ<br/>(Confidentiality)</td><td>การรักษาความ<br/>ถูกต้อง<br/>(Integrity)</td><td>การรักษาสภาพพร้อม<br/>ใช้งาน<br/>(Availability)</td></tr><tr><t..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 67,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p67_c1",
+        "similarity": 0.637,
+        "excerpt": "โดยอาจจะพิจารณาการตั้งค่าเพื่อความมั่นคงปลอดภัยพื้นฐานตาม CIS Benchmark ให้เป็นไปตามข้อเสนอแนะและคำอธิบายเพิ่มเติมของมาตรฐานฉบับนี้</td><td>☐ ดำเนินการแล้ว<br/>☐ อยู่ในระหว่างดำเนินการ<br/>☐ ยังไม่ได้..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 53,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p53_c1",
+        "similarity": 0.636,
+        "excerpt": "<table><tr><td>วัตถุประสงค์/ระดับ</td><td>การรักษาความลับ<br/>(Confidentiality)</td><td>การรักษาความถูกต้อง<br/>(Integrity)</td><td>การรักษาสภาพพร้อมใช้งาน<br/>(Availability)</td></tr><tr><td>ต่ำ</td>..."
+      },
+      {
+        "file": "owasp-top-10.pdf",
+        "page": 7,
+        "chunk_id": "owasp-top-10.pdf_p7_c0",
+        "similarity": 0.632,
+        "excerpt": "A01:2021 – Broken Access Control \n7\nExample Scenario:\nAn application uses unverified data in a structured query \nlanguage (SQL) call that is accessing account \ninformation:\npstmt.setString(1, request...."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 65,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p65_c1",
+        "similarity": 0.604,
+        "excerpt": "ดำเนินการแล้ว<br/>☐ อยู่ในระหว่างดำเนินการ<br/>☑ ยังไม่ได้ดำเนินการ</td><td></td></tr><tr><td>๘.๔</td><td>หน่วยงานจะต้องมีการควบคุมการเข้าถึง (Access Control) และทำให้ระบบมีความแข็งแกร่ง (System Harde..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 62,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p62_c1",
+        "similarity": 0.599,
+        "excerpt": "ดำเนินการแล้ว<br/>☐ อยู่ในระหว่างดำเนินการ<br/>☑ ยังไม่ได้ดำเนินการ</td><td></td></tr><tr><td></td><td></td><td>หน่วยงานจะต้องมีแนวทางจัดการ ควบคุม และป้องกันความเสี่ยงที่เหมาะสมสอดคล้องกับผลการประเมิ..."
+      },
+      {
+        "file": "owasp-top-10.pdf",
+        "page": 8,
+        "chunk_id": "owasp-top-10.pdf_p8_c0",
+        "similarity": 0.592,
+        "excerpt": "Broken Access Control Vulnerabilities \n8\n• Violation of the principle of least privilege or deny by default, where access should only be granted for \nparticular capabilities, roles, or users, but is a..."
+      }
+    ],
+    "confidence": 1.0,
+    "reason": null,
+    "elapsed_seconds": 12.909116744995117,
+    "judge_evaluation": {
+      "grounding_score": 10,
+      "completeness_score": 10,
+      "citation_quality_score": 10,
+      "clarity_score": 10,
+      "correctness_score": 10,
+      "total_score": 50,
+      "feedback": "The answer accurately defines Broken Access Control according to OWASP, providing both a general definition and specific examples. The answer is well-structured and easy to understand. The citations are accurate and traceable to the provided sources.",
+      "issues": []
+    }
+  },
+  {
+    "question": "What mitigation steps does OWASP recommend for Injection vulnerabilities?",
+    "status": "answered",
+    "answer": "According to [Source 9: owasp-top-10.pdf, Page 15], OWASP recommends the following mitigation steps for Injection vulnerabilities:\n\n1. Use a safe API that avoids using an interpreter entirely.\n2. Use positive server-side input validation.\n3. Escape special characters using the specific escape syntax for that interpreter (for residual dynamic queries).\n4. Use LIMIT and other SQL controls within queries to prevent mass disclosure of records in case of SQL injection.\n\nAdditionally, OWASP recommends source code review as the best method of detecting if applications are vulnerable to injections, and automated testing of all parameters, headers, URL, cookies, JSON, SOAP, and XML data inputs is strongly encouraged.",
+    "sources": [
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 64,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p64_c1",
+        "similarity": 0.691,
+        "excerpt": "DevSecOps และ อาจจะพิจารณาสิ่งสำคัญในการรักษาความมั่นคงปลอดภัย ของการพัฒนาโปรแกรมประยุกต์บนเว็บ รวมถึงอาจจะ พิจารณาประยุกต์ใช้หลักการ DevSecOps โดยใช้ หลักการ DSOMM ของมูลนิธิ OWASP ซึ่งมีรายละเอียด ต..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 67,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p67_c1",
+        "similarity": 0.678,
+        "excerpt": "โดยอาจจะพิจารณาการตั้งค่าเพื่อความมั่นคงปลอดภัยพื้นฐานตาม CIS Benchmark ให้เป็นไปตามข้อเสนอแนะและคำอธิบายเพิ่มเติมของมาตรฐานฉบับนี้</td><td>☐ ดำเนินการแล้ว<br/>☐ อยู่ในระหว่างดำเนินการ<br/>☐ ยังไม่ได้..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 62,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p62_c1",
+        "similarity": 0.672,
+        "excerpt": "ดำเนินการแล้ว<br/>☐ อยู่ในระหว่างดำเนินการ<br/>☑ ยังไม่ได้ดำเนินการ</td><td></td></tr><tr><td></td><td></td><td>หน่วยงานจะต้องมีแนวทางจัดการ ควบคุม และป้องกันความเสี่ยงที่เหมาะสมสอดคล้องกับผลการประเมิ..."
+      },
+      {
+        "file": "owasp-top-10.pdf",
+        "page": 1,
+        "chunk_id": "owasp-top-10.pdf_p1_c0",
+        "similarity": 0.61,
+        "excerpt": "Here's the extracted text from the image:\n\n**The OWASP Top 10**\n\nAugust 4, 2022\n\nTLP: WHITE, ID# 20220841300"
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 65,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p65_c2",
+        "similarity": 0.601,
+        "excerpt": "ดำเนินการแล้ว<br/>☐ อยู่ในระหว่างดำเนินการ<br/>☑ ยังไม่ได้ดำเนินการ</td><td></td></tr><tr><td></td><td>หน่วยงานจะต้องมีการทำให้ระบบมีความแข็งแกร่ง (System Hardening) ให้เป็นไปตามประมวลแนวทางปฏิบัติและ..."
+      },
+      {
+        "file": "mitre-attack-philosophy-2020.pdf",
+        "page": 42,
+        "chunk_id": "mitre-attack-philosophy-2020.pdf_p42_c1",
+        "similarity": 0.599,
+        "excerpt": "SQLi is a method of injecting code through an improperly secured web interface that is interpreted and executed by a database process. The resulting code execution can be used for a number of purposes..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 41,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p41_c3",
+        "similarity": 0.594,
+        "excerpt": "⁵ https://developer.wordpress.org/advanced-administration/security/hardening/\n⁶ https://docs.joomla.org/Security_Checklist/Joomla_Setup"
+      },
+      {
+        "file": "owasp-top-10.pdf",
+        "page": 36,
+        "chunk_id": "owasp-top-10.pdf_p36_c0",
+        "similarity": 0.594,
+        "excerpt": "References\n• “Broken Access Control,” OWASP. N.d. https://owasp.org/Top10/A01_2021-Broken_Access_Control/\n• “Cryptographic Failures,” OWASP. N.d. https://owasp.org/Top10/A02_2021-Cryptographic_Failure..."
+      },
+      {
+        "file": "owasp-top-10.pdf",
+        "page": 15,
+        "chunk_id": "owasp-top-10.pdf_p15_c0",
+        "similarity": 0.592,
+        "excerpt": "Injection Prevention\n15\n• The preferred option is to use a safe API, which avoids using \nthe interpreter entirely, provides a parameterized interface, or \nmigrates to Object Relational Mapping Tools (..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 35,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p35_c2",
+        "similarity": 0.588,
+        "excerpt": "๓) การให้บริการป้องกัน Web Application (Web Application Firewall: WAF) เป็นเทคโนโลยีที่ใช้ในการป้องกันการโจมตีที่เป็นอันตรายต่อเว็บแอปพลิเคชัน โดยระบบที่นำหน้าที่ในการตรวจสอบและกรองข้อมูลที่มีการส่งผ่..."
+      }
+    ],
+    "confidence": 0.8571428571428571,
+    "reason": null,
+    "elapsed_seconds": 5.203984498977661,
+    "judge_evaluation": {
+      "grounding_score": 10,
+      "completeness_score": 10,
+      "citation_quality_score": 10,
+      "clarity_score": 10,
+      "correctness_score": 10,
+      "total_score": 50,
+      "feedback": "The answer is well-grounded, complete, and clearly presents the mitigation steps recommended by OWASP for injection vulnerabilities. The citation is accurate and traceable.",
+      "issues": []
+    }
+  },
+  {
+    "question": "What website security controls are required by the Thailand Web Security Standard?",
+    "status": "answered",
+    "answer": "ตามข้อมูลที่ให้มา หน่วยงานจะต้องดำเนินการตามมาตรฐานการรักษาความมั่นคงปลอดภัยสำหรับเว็บไซต์ โดยเฉพาะอย่างยิ่งในด้านต่อไปนี้:\n\n1. กำหนดคุณลักษณะความมั่นคงปลอดภัยไซเบอร์ให้แก่ข้อมูลหรือระบบสารสนเทศของเว็บไซต์\n2. ประเมินและจัดระดับผลกระทบในแต่ละด้าน\n3. ระบุข้อกำหนดชั้นต่ำที่ต้องดำเนินการ และระบุการปฏิบัติตามมาตรฐานการรักษาความมั่นคงปลอดภัยสำหรับเว็บไซต์\n4. ประเมินตนเอง (Self-Assessment) เพื่อตรวจสอบการดำเนินการตามมาตรฐานการรักษาความมั่นคงปลอดภัยสำหรับเว็บไซต์\n\nนอกจากนี้ หน่วยงานยังจะต้องตั้งค่าเพื่อความมั่นคงปลอดภัยพื้นฐานของโปรแกรมสำหรับให้บริการเว็บ (Web Server Software) โปรแกรมประยุกต์บนเว็บ (Web Application) ระบบบริหารจัดการเว็บไซต์ (CMS) ระบบปฏิบัติการ (Operating System) และการตั้งค่าฐานข้อมูล\n\nและอื่นๆ",
+    "sources": [
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 67,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p67_c1",
+        "similarity": 0.75,
+        "excerpt": "โดยอาจจะพิจารณาการตั้งค่าเพื่อความมั่นคงปลอดภัยพื้นฐานตาม CIS Benchmark ให้เป็นไปตามข้อเสนอแนะและคำอธิบายเพิ่มเติมของมาตรฐานฉบับนี้</td><td>☐ ดำเนินการแล้ว<br/>☐ อยู่ในระหว่างดำเนินการ<br/>☐ ยังไม่ได้..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 57,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p57_c1",
+        "similarity": 0.704,
+        "excerpt": "<table><tr><td>ที่</td><td>ข้อกำหนด</td><td>ข้อเสนอแนะ</td><td>การประเมิน</td><td>หลักฐาน</td></tr><tr><td colspan=\"5\"><strong>ข้อกำหนดการกำกับดูแลด้านความมั่นคงปลอดภัยสำหรับเว็บไซต์ (หัวข้อ ๕.๑)</str..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 64,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p64_c1",
+        "similarity": 0.702,
+        "excerpt": "DevSecOps และ อาจจะพิจารณาสิ่งสำคัญในการรักษาความมั่นคงปลอดภัย ของการพัฒนาโปรแกรมประยุกต์บนเว็บ รวมถึงอาจจะ พิจารณาประยุกต์ใช้หลักการ DevSecOps โดยใช้ หลักการ DSOMM ของมูลนิธิ OWASP ซึ่งมีรายละเอียด ต..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 65,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p65_c1",
+        "similarity": 0.701,
+        "excerpt": "ดำเนินการแล้ว<br/>☐ อยู่ในระหว่างดำเนินการ<br/>☑ ยังไม่ได้ดำเนินการ</td><td></td></tr><tr><td>๘.๔</td><td>หน่วยงานจะต้องมีการควบคุมการเข้าถึง (Access Control) และทำให้ระบบมีความแข็งแกร่ง (System Harde..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 65,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p65_c0",
+        "similarity": 0.701,
+        "excerpt": "<page_number>- ๖๒ -</page_number><table><tr><td>ที่</td><td>ข้อกำหนด</td><td>ข้อเสนอแนะ</td><td>การประเมิน</td><td>หลักฐาน</td></tr><tr><td></td><td></td><td>หน่วยงานควรจะพิจารณาวางเครื่องบริการเว็บ (..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 2,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p2_c0",
+        "similarity": 0.687,
+        "excerpt": "เล่ม ๑๔๒ ตอนพิเศษ ๓๐๕ ง ราชกิจจานุเบกษา ๑๖ กันยายน ๒๕๖๘\n\nข้อ ๔ เพื่อประโยชน์ในการดำเนินการตามมาตรฐานการรักษาความมั่นคงปลอดภัยสำหรับเว็บไซต์ ตามข้อ ๓ วรรคหนึ่ง ให้หน่วยงานควบคุมหรือกำกับดูแลและหน่วยงาน..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 67,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p67_c0",
+        "similarity": 0.686,
+        "excerpt": "<page_number>- ๖๔ -</page_number><table><tr><td>ที่</td><td>ข้อกำหนด</td><td>ข้อเสนอแนะ</td><td>การประเมิน</td><td>หลักฐาน</td></tr><tr><td rowspan=\"2\">๘.๖</td><td rowspan=\"2\">หน่วยงานจะต้องตั้งค่าเพื..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 68,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p68_c0",
+        "similarity": 0.683,
+        "excerpt": "<page_number>- ๖๕ -</page_number><table><tr><td>ที่</td><td>ข้อกำหนด</td><td>ข้อเสนอแนะ</td><td>การประเมิน</td><td>หลักฐาน</td></tr><tr><td></td><td></td><td>หน่วยงานควรจะพิจารณารายละเอียดในการตั้งค่า..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 63,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p63_c1",
+        "similarity": 0.681,
+        "excerpt": "(Third Party Management) จะต้องรับผิดชอบ (Responsible) และมีภาระรับผิดชอบ (Accountable) ในการดูแลรักษาความมั่นคงปลอดภัยไซเบอร์ในการดำเนินงานให้บริการเว็บไซต์ ให้เป็นไปตามประมวลแนวทางปฏิบัติและกรอบมาตร..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 59,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p59_c1",
+        "similarity": 0.679,
+        "excerpt": "(หัวข้อ ๕.๔.๓)</td><td>☐ ยังต้องปรับปรุง<br/>☐ ดำเนินการแล้ว</td><td></td><td></td></tr><tr><td colspan=\"3\">**๕ การวางแผนกำหนดความต้องการด้านความมั่นคงปลอดภัยของเว็บไซต์ (หัวข้อ ๕.๕)**</td><td></td><t..."
+      }
+    ],
+    "confidence": 1.0,
+    "reason": null,
+    "elapsed_seconds": 6.548859357833862,
+    "judge_evaluation": {
+      "grounding_score": 9,
+      "completeness_score": 8,
+      "citation_quality_score": 9,
+      "clarity_score": 8,
+      "correctness_score": 9,
+      "total_score": 43,
+      "feedback": "The answer provides a good overview of the website security controls required by the Thailand Web Security Standard, based on the provided document. The points are generally well-supported by the document, and the citations are present. However, the answer could be more comprehensive by including more specific details from the standard. The clarity is good, but could be improved with more precise language.",
+      "issues": []
+    }
+  },
+  {
+    "question": "What authentication requirements does the Thailand Web Security Standard mandate?",
+    "status": "answered",
+    "answer": "The Thailand Web Security Standard mandates that authentication be implemented to control access to systems and data, with a focus on ensuring confidentiality, integrity, and availability. This is reflected in various sections of the standard, including:\n\n* Section 8.4, which requires controls for access control and system hardening\n* Section 6.2.4, which emphasizes the importance of authentication and access control to ensure confidentiality, integrity, and availability\n\nHowever, there is no specific mention of authentication requirements in the provided text. The standard appears to focus on broader security measures, such as access control, system hardening, remote connection management, removable storage media management, information sharing, and website security awareness.",
+    "sources": [
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 67,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p67_c1",
+        "similarity": 0.699,
+        "excerpt": "โดยอาจจะพิจารณาการตั้งค่าเพื่อความมั่นคงปลอดภัยพื้นฐานตาม CIS Benchmark ให้เป็นไปตามข้อเสนอแนะและคำอธิบายเพิ่มเติมของมาตรฐานฉบับนี้</td><td>☐ ดำเนินการแล้ว<br/>☐ อยู่ในระหว่างดำเนินการ<br/>☐ ยังไม่ได้..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 68,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p68_c1",
+        "similarity": 0.675,
+        "excerpt": "โดยอาจจะพิจารณาแนวทางและการเลือกบริการ ซึ่งมีรายละเอียดตามข้อเสนอแนะและคำอธิบายเพิ่มเติมของมาตรฐานฉบับนี้</td><td>☐ ดำเนินการแล้ว<br/>☐ อยู่ในระหว่างดำเนินการ<br/>☐ ยังไม่ได้ดำเนินการ</td><td></td><td..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 63,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p63_c1",
+        "similarity": 0.653,
+        "excerpt": "(Third Party Management) จะต้องรับผิดชอบ (Responsible) และมีภาระรับผิดชอบ (Accountable) ในการดูแลรักษาความมั่นคงปลอดภัยไซเบอร์ในการดำเนินงานให้บริการเว็บไซต์ ให้เป็นไปตามประมวลแนวทางปฏิบัติและกรอบมาตร..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 68,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p68_c0",
+        "similarity": 0.646,
+        "excerpt": "<page_number>- ๖๕ -</page_number><table><tr><td>ที่</td><td>ข้อกำหนด</td><td>ข้อเสนอแนะ</td><td>การประเมิน</td><td>หลักฐาน</td></tr><tr><td></td><td></td><td>หน่วยงานควรจะพิจารณารายละเอียดในการตั้งค่า..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 57,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p57_c1",
+        "similarity": 0.637,
+        "excerpt": "<table><tr><td>ที่</td><td>ข้อกำหนด</td><td>ข้อเสนอแนะ</td><td>การประเมิน</td><td>หลักฐาน</td></tr><tr><td colspan=\"5\"><strong>ข้อกำหนดการกำกับดูแลด้านความมั่นคงปลอดภัยสำหรับเว็บไซต์ (หัวข้อ ๕.๑)</str..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 65,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p65_c0",
+        "similarity": 0.626,
+        "excerpt": "<page_number>- ๖๒ -</page_number><table><tr><td>ที่</td><td>ข้อกำหนด</td><td>ข้อเสนอแนะ</td><td>การประเมิน</td><td>หลักฐาน</td></tr><tr><td></td><td></td><td>หน่วยงานควรจะพิจารณาวางเครื่องบริการเว็บ (..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 54,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p54_c1",
+        "similarity": 0.624,
+        "excerpt": "<table><tr><td>วัตถุประสงค์/ ระดับ</td><td>การรักษาความลับ<br/>(Confidentiality)</td><td>การรักษาความถูกต้อง<br/>(Integrity)</td><td>การรักษาสภาพพร้อมใช้<br/>งาน<br/>(Availability)</td></tr><tr><td>ต่..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 65,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p65_c1",
+        "similarity": 0.621,
+        "excerpt": "ดำเนินการแล้ว<br/>☐ อยู่ในระหว่างดำเนินการ<br/>☑ ยังไม่ได้ดำเนินการ</td><td></td></tr><tr><td>๘.๔</td><td>หน่วยงานจะต้องมีการควบคุมการเข้าถึง (Access Control) และทำให้ระบบมีความแข็งแกร่ง (System Harde..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 64,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p64_c1",
+        "similarity": 0.621,
+        "excerpt": "DevSecOps และ อาจจะพิจารณาสิ่งสำคัญในการรักษาความมั่นคงปลอดภัย ของการพัฒนาโปรแกรมประยุกต์บนเว็บ รวมถึงอาจจะ พิจารณาประยุกต์ใช้หลักการ DevSecOps โดยใช้ หลักการ DSOMM ของมูลนิธิ OWASP ซึ่งมีรายละเอียด ต..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 66,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p66_c1",
+        "similarity": 0.619,
+        "excerpt": "<table><tr><td>ที่</td><td>ข้อกำหนด</td><td>ข้อเสนอแนะ</td><td>การประเมิน</td><td>หลักฐาน</td></tr><tr><td></td><td></td><td>หน่วยงานจะต้องมีการบริหารจัดการเชื่อมต่อระยะไกล (Remote Connection) ให้เป็น..."
+      }
+    ],
+    "confidence": 0.6,
+    "reason": null,
+    "elapsed_seconds": 5.421104192733765,
+    "judge_evaluation": {
+      "grounding_score": 7,
+      "completeness_score": 6,
+      "citation_quality_score": 8,
+      "clarity_score": 9,
+      "correctness_score": 7,
+      "total_score": 37,
+      "feedback": "The answer provides a general overview of authentication requirements based on the provided document. It correctly identifies the importance of authentication and access control within the standard. However, it also acknowledges the lack of specific details regarding authentication requirements in the provided text, which impacts completeness. The citations are generally good, but could be more specific to the exact claims made.",
+      "issues": [
+        "Lack of specific authentication requirements detailed in the answer.",
+        "Some citations are not directly supporting the claims made."
+      ]
+    }
+  },
+  {
+    "question": "What is the difference between a Tactic and a Technique in MITRE ATT&CK?",
+    "status": "answered",
+    "answer": "According to [Source 2, Page 18], \"Tactics are treated as “tags” within ATT&CK where a technique or sub-technique is associated or tagged with one or more tactic categories depending on the different results that can be achieved by using a technique.\"\n\nA Tactic represents short-term, tactical adversary goals during an attack [Source 6, Page 11], while a Technique describes the means by which adversaries achieve tactical goals [Source 2, Page 18]. In other words, Tactics are high-level objectives, and Techniques are the specific actions taken to achieve those objectives.\n\nFor example, under the Persistence tactic, there are techniques such as Hijack Execution Flow, Pre-OS Boot, and Scheduled Task/Job [Source 3, Page 16].",
+    "sources": [
+      {
+        "file": "mitre-attack-philosophy-2020.pdf",
+        "page": 11,
+        "chunk_id": "mitre-attack-philosophy-2020.pdf_p11_c1",
+        "similarity": 0.786,
+        "excerpt": "Introduction MITRE ATT&CK is a curated knowledge base and model for cyber adversary behavior, reflecting the various phases of an adversary’s attack lifecycle and the platforms they are known to targe..."
+      },
+      {
+        "file": "mitre-attack-philosophy-2020.pdf",
+        "page": 18,
+        "chunk_id": "mitre-attack-philosophy-2020.pdf_p18_c3",
+        "similarity": 0.748,
+        "excerpt": ". Tactics are treated as “tags” within ATT&CK where a technique or sub-technique is associated or tagged with one or more tactic categories depending on the different results that can be achieved by u..."
+      },
+      {
+        "file": "mitre-attack-philosophy-2020.pdf",
+        "page": 16,
+        "chunk_id": "mitre-attack-philosophy-2020.pdf_p16_c1",
+        "similarity": 0.736,
+        "excerpt": "The ATT&CK Model The basis of ATT&CK is the set of techniques and sub-techniques that represent actions that adversaries can perform to accomplish objectives. Those objectives are represented by the t..."
+      },
+      {
+        "file": "mitre-attack-philosophy-2020.pdf",
+        "page": 20,
+        "chunk_id": "mitre-attack-philosophy-2020.pdf_p20_c1",
+        "similarity": 0.727,
+        "excerpt": "Table 2. ATT&CK Technique and Sub-Technique Model Data Item Type Description Name* Field The name of the (sub-)technique. ID* Tag Unique identifier for the (sub-)technique within the knowledge base. F..."
+      },
+      {
+        "file": "mitre-attack-philosophy-2020.pdf",
+        "page": 24,
+        "chunk_id": "mitre-attack-philosophy-2020.pdf_p24_c2",
+        "similarity": 0.722,
+        "excerpt": ". Version* Field Version of the group in the format of MAJOR.MINOR. Contributor Tag List of non-MITRE contributors (individual and/or organization) from first to most recent that contributed informati..."
+      },
+      {
+        "file": "mitre-attack-philosophy-2020.pdf",
+        "page": 11,
+        "chunk_id": "mitre-attack-philosophy-2020.pdf_p11_c2",
+        "similarity": 0.711,
+        "excerpt": ". At a high-level, ATT&CK is a behavioral model that consists of the following core components: • Tactics, denoting short-term, tactical adversary goals during an attack; • Techniques, describing the ..."
+      },
+      {
+        "file": "mitre-attack-philosophy-2020.pdf",
+        "page": 43,
+        "chunk_id": "mitre-attack-philosophy-2020.pdf_p43_c2",
+        "similarity": 0.693,
+        "excerpt": ". Since ATT&CK was published, MITRE has expanded it into several additional technology domains including mobile, cloud, and ICS. Still more domains could be researched, but given our criteria of basin..."
+      },
+      {
+        "file": "mitre-attack-philosophy-2020.pdf",
+        "page": 21,
+        "chunk_id": "mitre-attack-philosophy-2020.pdf_p21_c1",
+        "similarity": 0.684,
+        "excerpt": "technique coverage based on unique data sources. (For example, “what techniques can I detect if I have process monitoring in place?”) Supports Remote Tag If the (sub-)technique can be used to execute ..."
+      },
+      {
+        "file": "mitre-attack-philosophy-2020.pdf",
+        "page": 30,
+        "chunk_id": "mitre-attack-philosophy-2020.pdf_p30_c2",
+        "similarity": 0.681,
+        "excerpt": "The ATT&CK Methodology The previous sections of this document have described and defined the purpose and structure of the ATT&CK knowledge base. This section describes the conceptual components of the..."
+      },
+      {
+        "file": "mitre-attack-philosophy-2020.pdf",
+        "page": 40,
+        "chunk_id": "mitre-attack-philosophy-2020.pdf_p40_c1",
+        "similarity": 0.681,
+        "excerpt": "aspects of a technique and relate them to specific reasons they are used and what data sources and countermeasures can be used by defenders. Analysts should also use caution and not assume a technique..."
+      }
+    ],
+    "confidence": 1.0,
+    "reason": null,
+    "elapsed_seconds": 5.194067716598511,
+    "judge_evaluation": {
+      "grounding_score": 10,
+      "completeness_score": 10,
+      "citation_quality_score": 10,
+      "clarity_score": 10,
+      "correctness_score": 10,
+      "total_score": 50,
+      "feedback": "The answer accurately and completely explains the difference between Tactics and Techniques in MITRE ATT&CK, providing a clear definition and example. All claims are well-supported by the provided sources, and the citations are accurate and traceable.",
+      "issues": []
+    }
+  },
+  {
+    "question": "How does MITRE describe the purpose of Persistence techniques?",
+    "status": "refused",
+    "answer": null,
+    "sources": [
+      {
+        "file": "mitre-attack-philosophy-2020.pdf",
+        "page": 17,
+        "chunk_id": "mitre-attack-philosophy-2020.pdf_p17_c0",
+        "similarity": 0.783,
+        "excerpt": "7 ©2020 The MITRE Corporation. All Rights Reserved Approved for Public Release. Distribution unlimited 19-01075-28. \n Figure 2. Persistence tactic with four expanded techniques"
+      },
+      {
+        "file": "mitre-attack-philosophy-2020.pdf",
+        "page": 24,
+        "chunk_id": "mitre-attack-philosophy-2020.pdf_p24_c2",
+        "similarity": 0.703,
+        "excerpt": ". Version* Field Version of the group in the format of MAJOR.MINOR. Contributor Tag List of non-MITRE contributors (individual and/or organization) from first to most recent that contributed informati..."
+      },
+      {
+        "file": "mitre-attack-philosophy-2020.pdf",
+        "page": 21,
+        "chunk_id": "mitre-attack-philosophy-2020.pdf_p21_c1",
+        "similarity": 0.695,
+        "excerpt": "technique coverage based on unique data sources. (For example, “what techniques can I detect if I have process monitoring in place?”) Supports Remote Tag If the (sub-)technique can be used to execute ..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 54,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p54_c1",
+        "similarity": 0.67,
+        "excerpt": "<table><tr><td>วัตถุประสงค์/ ระดับ</td><td>การรักษาความลับ<br/>(Confidentiality)</td><td>การรักษาความถูกต้อง<br/>(Integrity)</td><td>การรักษาสภาพพร้อมใช้<br/>งาน<br/>(Availability)</td></tr><tr><td>ต่..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 52,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p52_c1",
+        "similarity": 0.669,
+        "excerpt": "<table><tr><td>วัตถุประสงค์/ระดับ</td><td>การรักษาความลับ<br/>(Confidentiality)</td><td>การรักษาความ<br/>ถูกต้อง<br/>(Integrity)</td><td>การรักษาสภาพพร้อม<br/>ใช้งาน<br/>(Availability)</td></tr><tr><t..."
+      },
+      {
+        "file": "mitre-attack-philosophy-2020.pdf",
+        "page": 16,
+        "chunk_id": "mitre-attack-philosophy-2020.pdf_p16_c2",
+        "similarity": 0.666,
+        "excerpt": "Figure 1. The ATT&CK for Enterprise Matrix Furthermore, some techniques can be broken down into sub-techniques that describe in more detail how those behaviors can be performed. For example, Pre-OS Bo..."
+      },
+      {
+        "file": "mitre-attack-philosophy-2020.pdf",
+        "page": 11,
+        "chunk_id": "mitre-attack-philosophy-2020.pdf_p11_c1",
+        "similarity": 0.661,
+        "excerpt": "Introduction MITRE ATT&CK is a curated knowledge base and model for cyber adversary behavior, reflecting the various phases of an adversary’s attack lifecycle and the platforms they are known to targe..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 53,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p53_c1",
+        "similarity": 0.66,
+        "excerpt": "<table><tr><td>วัตถุประสงค์/ระดับ</td><td>การรักษาความลับ<br/>(Confidentiality)</td><td>การรักษาความถูกต้อง<br/>(Integrity)</td><td>การรักษาสภาพพร้อมใช้งาน<br/>(Availability)</td></tr><tr><td>ต่ำ</td>..."
+      },
+      {
+        "file": "mitre-attack-philosophy-2020.pdf",
+        "page": 23,
+        "chunk_id": "mitre-attack-philosophy-2020.pdf_p23_c3",
+        "similarity": 0.632,
+        "excerpt": ". It would have resulted in several of the same sub-techniques each for different platforms, such as Local, Domain, and Default Valid Accounts for each of Windows, Mac, Linux, etc. This is especially ..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 66,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p66_c1",
+        "similarity": 0.63,
+        "excerpt": "<table><tr><td>ที่</td><td>ข้อกำหนด</td><td>ข้อเสนอแนะ</td><td>การประเมิน</td><td>หลักฐาน</td></tr><tr><td></td><td></td><td>หน่วยงานจะต้องมีการบริหารจัดการเชื่อมต่อระยะไกล (Remote Connection) ให้เป็น..."
+      }
+    ],
+    "confidence": 0.0,
+    "reason": "Answer cannot be sufficiently grounded in dataset evidence",
+    "elapsed_seconds": 4.2433390617370605,
+    "judge_evaluation": {
+      "grounding_score": 10,
+      "completeness_score": 10,
+      "citation_quality_score": 10,
+      "clarity_score": 10,
+      "correctness_score": 10,
+      "total_score": 50,
+      "feedback": "The model appropriately refused to answer the question because it could not be sufficiently grounded in the provided sources. This demonstrates a good understanding of its limitations and prevents potential hallucinations.",
+      "issues": []
+    }
+  },
+  {
+    "question": "What does the dataset say about ransomware attacks?",
+    "status": "refused",
+    "answer": null,
+    "sources": [
+      {
+        "file": "mitre-attack-philosophy-2020.pdf",
+        "page": 24,
+        "chunk_id": "mitre-attack-philosophy-2020.pdf_p24_c2",
+        "similarity": 0.621,
+        "excerpt": ". Version* Field Version of the group in the format of MAJOR.MINOR. Contributor Tag List of non-MITRE contributors (individual and/or organization) from first to most recent that contributed informati..."
+      },
+      {
+        "file": "mitre-attack-philosophy-2020.pdf",
+        "page": 25,
+        "chunk_id": "mitre-attack-philosophy-2020.pdf_p25_c3",
+        "similarity": 0.577,
+        "excerpt": ". Version* Field Version of the software in the format of MAJOR.MINOR. Contributor Tag List of non-MITRE contributors (individual and/or organization) from first to most recent that contributed inform..."
+      },
+      {
+        "file": "mitre-attack-philosophy-2020.pdf",
+        "page": 34,
+        "chunk_id": "mitre-attack-philosophy-2020.pdf_p34_c4",
+        "similarity": 0.556,
+        "excerpt": ". However, these tactics did not cover disruptive and/or destructive attacks against information or systems. In 2019, the Impact tactic was added to ATT&CK to address that lack of coverage. With the r..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 62,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p62_c1",
+        "similarity": 0.541,
+        "excerpt": "ดำเนินการแล้ว<br/>☐ อยู่ในระหว่างดำเนินการ<br/>☑ ยังไม่ได้ดำเนินการ</td><td></td></tr><tr><td></td><td></td><td>หน่วยงานจะต้องมีแนวทางจัดการ ควบคุม และป้องกันความเสี่ยงที่เหมาะสมสอดคล้องกับผลการประเมิ..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 52,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p52_c1",
+        "similarity": 0.531,
+        "excerpt": "<table><tr><td>วัตถุประสงค์/ระดับ</td><td>การรักษาความลับ<br/>(Confidentiality)</td><td>การรักษาความ<br/>ถูกต้อง<br/>(Integrity)</td><td>การรักษาสภาพพร้อม<br/>ใช้งาน<br/>(Availability)</td></tr><tr><t..."
+      },
+      {
+        "file": "mitre-attack-philosophy-2020.pdf",
+        "page": 11,
+        "chunk_id": "mitre-attack-philosophy-2020.pdf_p11_c1",
+        "similarity": 0.53,
+        "excerpt": "Introduction MITRE ATT&CK is a curated knowledge base and model for cyber adversary behavior, reflecting the various phases of an adversary’s attack lifecycle and the platforms they are known to targe..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 53,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p53_c1",
+        "similarity": 0.523,
+        "excerpt": "<table><tr><td>วัตถุประสงค์/ระดับ</td><td>การรักษาความลับ<br/>(Confidentiality)</td><td>การรักษาความถูกต้อง<br/>(Integrity)</td><td>การรักษาสภาพพร้อมใช้งาน<br/>(Availability)</td></tr><tr><td>ต่ำ</td>..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 54,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p54_c1",
+        "similarity": 0.523,
+        "excerpt": "<table><tr><td>วัตถุประสงค์/ ระดับ</td><td>การรักษาความลับ<br/>(Confidentiality)</td><td>การรักษาความถูกต้อง<br/>(Integrity)</td><td>การรักษาสภาพพร้อมใช้<br/>งาน<br/>(Availability)</td></tr><tr><td>ต่..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 56,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p56_c1",
+        "similarity": 0.522,
+        "excerpt": "<table><tr><td>ผลกระทบด้าน</td><th colspan=\"3\">วัตถุประสงค์ที่มีผลกระทบมากที่สุด<td>ระดับผลกระทบ</td></th></tr><tr><td rowspan=\"2\"></td><td colspan=\"3\"><ul><li>☐ ความลับ</li><li>☐ ความถูกต้อง</li><li>..."
+      },
+      {
+        "file": "mitre-attack-philosophy-2020.pdf",
+        "page": 36,
+        "chunk_id": "mitre-attack-philosophy-2020.pdf_p36_c4",
+        "similarity": 0.521,
+        "excerpt": ". ATT&CK remains strongly tied to threat intelligence sources on persistent threat groups. As the scope of ATT&CK has expanded and been refined, so too have the criteria necessary to add information. ..."
+      }
+    ],
+    "confidence": 0.0,
+    "reason": "Answer cannot be sufficiently grounded in dataset evidence",
+    "elapsed_seconds": 4.3026745319366455,
+    "judge_evaluation": {
+      "grounding_score": 10,
+      "completeness_score": 10,
+      "citation_quality_score": 10,
+      "clarity_score": 10,
+      "correctness_score": 10,
+      "total_score": 50,
+      "feedback": "The model appropriately refused to answer the question because it could not be sufficiently grounded in the provided dataset evidence. This is a responsible refusal.",
+      "issues": []
+    }
+  },
+  {
+    "question": "What are the latest zero-day vulnerabilities discovered in 2024?",
+    "status": "answered",
+    "answer": "I cannot answer this question based on the provided documents.",
+    "sources": [
+      {
+        "file": "mitre-attack-philosophy-2020.pdf",
+        "page": 24,
+        "chunk_id": "mitre-attack-philosophy-2020.pdf_p24_c2",
+        "similarity": 0.571,
+        "excerpt": ". Version* Field Version of the group in the format of MAJOR.MINOR. Contributor Tag List of non-MITRE contributors (individual and/or organization) from first to most recent that contributed informati..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 62,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p62_c1",
+        "similarity": 0.566,
+        "excerpt": "ดำเนินการแล้ว<br/>☐ อยู่ในระหว่างดำเนินการ<br/>☑ ยังไม่ได้ดำเนินการ</td><td></td></tr><tr><td></td><td></td><td>หน่วยงานจะต้องมีแนวทางจัดการ ควบคุม และป้องกันความเสี่ยงที่เหมาะสมสอดคล้องกับผลการประเมิ..."
+      },
+      {
+        "file": "owasp-top-10.pdf",
+        "page": 1,
+        "chunk_id": "owasp-top-10.pdf_p1_c0",
+        "similarity": 0.556,
+        "excerpt": "Here's the extracted text from the image:\n\n**The OWASP Top 10**\n\nAugust 4, 2022\n\nTLP: WHITE, ID# 20220841300"
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 64,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p64_c1",
+        "similarity": 0.534,
+        "excerpt": "DevSecOps และ อาจจะพิจารณาสิ่งสำคัญในการรักษาความมั่นคงปลอดภัย ของการพัฒนาโปรแกรมประยุกต์บนเว็บ รวมถึงอาจจะ พิจารณาประยุกต์ใช้หลักการ DevSecOps โดยใช้ หลักการ DSOMM ของมูลนิธิ OWASP ซึ่งมีรายละเอียด ต..."
+      },
+      {
+        "file": "mitre-attack-philosophy-2020.pdf",
+        "page": 25,
+        "chunk_id": "mitre-attack-philosophy-2020.pdf_p25_c3",
+        "similarity": 0.531,
+        "excerpt": ". Version* Field Version of the software in the format of MAJOR.MINOR. Contributor Tag List of non-MITRE contributors (individual and/or organization) from first to most recent that contributed inform..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 67,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p67_c1",
+        "similarity": 0.524,
+        "excerpt": "โดยอาจจะพิจารณาการตั้งค่าเพื่อความมั่นคงปลอดภัยพื้นฐานตาม CIS Benchmark ให้เป็นไปตามข้อเสนอแนะและคำอธิบายเพิ่มเติมของมาตรฐานฉบับนี้</td><td>☐ ดำเนินการแล้ว<br/>☐ อยู่ในระหว่างดำเนินการ<br/>☐ ยังไม่ได้..."
+      },
+      {
+        "file": "thailand-web-security-standard-2025.pdf",
+        "page": 30,
+        "chunk_id": "thailand-web-security-standard-2025.pdf_p30_c1",
+        "similarity": 0.509,
+        "excerpt": "### การประเมินช่องโหว่และการทดสอบเจาะระบบ (Vulnerability Assessment and Penetration Testing)\n\nการประเมินความเสี่ยงจากช่องโหว่ (Vulnerability Assessment) เป็นกระบวนการ ที่ใช้เพื่อตรวจสอบและระบุช่องโหว่..."
+      },
+      {
+        "file": "mitre-attack-philosophy-2020.pdf",
+        "page": 5,
+        "chunk_id": "mitre-attack-philosophy-2020.pdf_p5_c0",
+        "similarity": 0.506,
+        "excerpt": "vi ©2020 The MITRE Corporation. All Rights Reserved Approved for Public Release. Distribution unlimited 19-01075-28. \nPreface This paper documents the published version of ATT&CK as of March 2020 with..."
+      },
+      {
+        "file": "mitre-attack-philosophy-2020.pdf",
+        "page": 45,
+        "chunk_id": "mitre-attack-philosophy-2020.pdf_p45_c3",
+        "similarity": 0.506,
+        "excerpt": ". [Accessed 17 March 2020]. [10] The MITRE Corporation, \"Previous Versions,\" [Online]. Available: https://attack.mitre.org/resources/previous-versions/. [Accessed 17 March 2020]. [11] FIRST, \"Common V..."
+      },
+      {
+        "file": "mitre-attack-philosophy-2020.pdf",
+        "page": 21,
+        "chunk_id": "mitre-attack-philosophy-2020.pdf_p21_c1",
+        "similarity": 0.503,
+        "excerpt": "technique coverage based on unique data sources. (For example, “what techniques can I detect if I have process monitoring in place?”) Supports Remote Tag If the (sub-)technique can be used to execute ..."
+      }
+    ],
+    "confidence": 1.0,
+    "reason": null,
+    "elapsed_seconds": 4.250751256942749,
+    "judge_evaluation": {
+      "grounding_score": 10,
+      "completeness_score": 10,
+      "citation_quality_score": 10,
+      "clarity_score": 10,
+      "correctness_score": 10,
+      "total_score": 50,
+      "feedback": "The model appropriately refused to answer the question because the provided documents do not contain information about zero-day vulnerabilities discovered in 2024.",
+      "issues": []
+    }
+  }
+]
