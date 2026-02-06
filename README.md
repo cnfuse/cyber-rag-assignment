@@ -18,8 +18,9 @@ A production-ready, strict dataset-only RAG (Retrieval-Augmented Generation) age
 - **Ollama** with Gemma model
   - Download: https://ollama.ai
   - Or: `winget install Ollama` (Windows)
-- **Typhoon API Key** (for Thai PDF processing)
-  - Get your key from: https://github.com/scb-10x/typhoon-ocr
+- **Typhoon API Key** (optional, for Thai PDF processing)
+  - Sign up at: https://opentyphoon.ai
+  - Or visit: https://scb-10x.github.io/typhoon/ for documentation
 
 ## Quick Start
 
@@ -129,7 +130,7 @@ All agents communicate through explicit tools:
 | Vector DB | ChromaDB (SQLite-backed) |
 | Embeddings | Qwen3-embedding via Ollama |
 | LLM | Gemma 3 via Ollama |
-| OCR | Typhoon OCR (Thai PDFs) |
+| OCR | Typhoon OCR API (Thai PDFs) |
 | API | FastAPI + Uvicorn |
 | Logging | Structlog (JSON) |
 | Metrics | Prometheus |
@@ -163,9 +164,10 @@ OLLAMA_MODEL=gemma3:12b
 # Embeddings (Ollama)
 EMBEDDING_MODEL=qwen3-embedding:0.6b
 
-# Typhoon OCR (Thai PDFs)
-TYPHOON_API_KEY=your_typhoon_api_key_here
+# Typhoon OCR (Optional - for Thai PDFs)
+TYPHOON_API_KEY=your-typhoon-api-key
 TYPHOON_BASE_URL=https://api.opentyphoon.ai/v1
+ENABLE_TYPHOON_OCR=true
 
 # RAG Parameters
 CHUNK_SIZE=1000

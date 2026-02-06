@@ -32,10 +32,11 @@ class TyphoonOCRExtractor:
         self.enabled = settings.ENABLE_TYPHOON_OCR
         
         if self.enabled:
-            if not self.api_key or self.api_key == "your_typhoon_api_key_here":
+            if not self.api_key or self.api_key == "your-typhoon-api-key":
                 logger.warning(
                     "Typhoon OCR is enabled but no valid API key found. "
-                    "Set TYPHOON_API_KEY environment variable."
+                    "Set TYPHOON_API_KEY environment variable. "
+                    "Get your API key from: https://opentyphoon.ai"
                 )
                 self.enabled = False
             else:
