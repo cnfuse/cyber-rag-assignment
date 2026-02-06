@@ -22,7 +22,7 @@ class Settings:
     CHROMA_PERSIST_DIR: Path = Path(os.getenv("CHROMA_PERSIST_DIR", "./chroma_db"))
     
     # Ollama Configuration
-    OLLAMA_BASE_URL: str = os.getenv("OLLAMA_BASE_URL", "http://192.168.4.12:11434")
+    OLLAMA_BASE_URL: str = os.getenv("OLLAMA_BASE_URL", "http://127.0.0.1:11434")
     OLLAMA_MODEL: str = os.getenv("OLLAMA_MODEL", "gemma3:12b")
     OLLAMA_TIMEOUT: int = int(os.getenv("OLLAMA_TIMEOUT", "120"))
     
@@ -48,11 +48,7 @@ class Settings:
     # Logging
     LOG_LEVEL: str = os.getenv("LOG_LEVEL", "INFO")
     LOG_FORMAT: str = os.getenv("LOG_FORMAT", "json")
-    
-    # Optional: OpenAI Fallback
-    OPENAI_API_KEY: Optional[str] = os.getenv("OPENAI_API_KEY")
-    OPENAI_MODEL: str = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
-    
+        
     # Typhoon OCR Configuration
     TYPHOON_API_KEY: Optional[str] = os.getenv("TYPHOON_API_KEY") or os.getenv("TYPHOON_OCR_API_KEY")
     TYPHOON_BASE_URL: str = os.getenv("TYPHOON_BASE_URL", "https://api.opentyphoon.ai/v1")
