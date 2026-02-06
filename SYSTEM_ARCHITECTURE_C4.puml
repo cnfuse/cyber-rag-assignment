@@ -1,0 +1,40 @@
+@startuml Cybersecurity_RAG_Agent_C4
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+title Cybersecurity RAG Agent - System Architecture
+
+Person(user, "User", "Cybersecurity analyst or researcher")
+
+System_Boundary(rag_system, "Cybersecurity RAG Agent") {
+    Container(api, "API Server", "FastAPI + Uvicorn", "Production HTTP API with health checks, metrics, and CORS")
+    
+    Container(main_agent, "Main Agent", "Python", "Orchestrates the three specialized agents")
+    
+    Container_Boundary(agents, "Specialized Agents") {
+        Container(indexing_agent, "Indexing Agent", "Python", "Loads PDFs, chunks documents, builds embeddings")
+        Container(qa_agent, "QA Agent", "Python", "Retrieves context, generates answers with citations")
+        Container(grounding_agent, "Grounding Agent", "Python", "Verifies claims, enforces refusal policy")
+    }
+    
+    Container(tools, "Tools Interface", "Python", "Explicit tool API for all agent operations")
+    
+    ContainerDb(chromadb, "ChromaDB", "SQLite", "Persistent vector store for document embeddings")
+}
+
+System_Ext(ollama, "Ollama Server", "LLM (Gemma 3:12b) + Embeddings (Qwen3)")
+
+Rel(user, api, "Sends questions", "HTTP/JSON")
+Rel(api, main_agent, "Routes requests")
+Rel(main_agent, indexing_agent, "Manages index")
+Rel(main_agent, qa_agent, "Processes queries")
+Rel(main_agent, grounding_agent, "Verifies answers")
+
+Rel(indexing_agent, tools, "list_documents, build_index")
+Rel(qa_agent, tools, "vector_search, get_chunk_text")
+Rel(grounding_agent, tools, "verify_grounding")
+
+Rel(tools, chromadb, "Store/retrieve embeddings")
+Rel(qa_agent, ollama, "Generate answers", "HTTP")
+Rel(tools, ollama, "Generate embeddings", "HTTP")
+
+@enduml
